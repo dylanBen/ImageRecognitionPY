@@ -2,7 +2,7 @@
 import numpy as np
 from fs.osfs import OSFS
 from PIL import Image, ImageFilter
-# py -m pip install numpy
+
 TRAIN_IMAGES_DIR = './data/train';
 TEST_IMAGES_DIR = './data/test';
 
@@ -40,26 +40,28 @@ def imagePrepare(path):
     im = Image.open(path).convert("L")
     width = float(im.size[0])
     height = float(im.size[1])
-    newImage = Image.new("L", (28,28), 255)
+    newImage = Image.new("L", (96,96), 255)
 
     if width > height:
-        nheight = int(round((20.0 / width * height), 0))
+        nheight = int(round((100.0 / width * height), 0))
         if (nheight == 0):
             nheight = 1
 
-        img = im.resize((20, nheight), Image.ANTIALIAS).filter(ImageFilter.SHARPEN)
-        wtop = int(round(((28 - nheight) / 2), 0))
-        newImage.paste(img, (4, wtop))
+        img = im.resize((100, nheight), Image.ANTIALIAS).filter(ImageFilter.SHARPEN)
+        wtop = int(round(((96 - nheight) / 2), 0))
+        newImage.paste(img, (0, wtop))
     else:
         nwidth = int(round((20.0 / height * width), 0))
         if (nwidth == 0):
             nwidth = 1
 
         img = im.resize((nwidth, 20), Image.ANTIALIAS).filter(ImageFilter.SHARPEN)
-        wleft = int(round(((28 - nwidth) / 2), 0))
+        wleft = int(round(((96 - nwidth) / 2), 0))
         newImage.paste(img, (wleft, 4))
 
     tv = list(newImage.getdata())
+    # tv = list(img.getdata())
+    # tv = list(im.getdata())
 
     tva = [(255 - x) * 1.0 / 255.0 for x in tv]
     # print(tva)
