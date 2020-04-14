@@ -35,36 +35,34 @@ def loadImages(dataDir):
 def imagePrepare(path):
     """
     :param path: chemin de l'image à convertir
-    :return: l'image sous le format 28*28 pixel (784)
+    :return: l'image sous le format 192*192 pixel (36 864)
     """
     im = Image.open(path).convert("L")
     width = float(im.size[0])
     height = float(im.size[1])
-    newImage = Image.new("L", (96,96), 255)
+    newImage = Image.new("L", (192,192), 255)
 
     if width > height:
-        nheight = int(round((100.0 / width * height), 0))
+        nheight = int(round((192.0 / width * height), 0))
         if (nheight == 0):
             nheight = 1
 
-        img = im.resize((100, nheight), Image.ANTIALIAS).filter(ImageFilter.SHARPEN)
-        wtop = int(round(((96 - nheight) / 2), 0))
+        img = im.resize((192, nheight), Image.ANTIALIAS).filter(ImageFilter.SHARPEN)
+        wtop = int(round(((192 - nheight) / 2), 0))
         newImage.paste(img, (0, wtop))
     else:
-        nwidth = int(round((20.0 / height * width), 0))
+        # nwidth = int(round((20.0 / height * width), 0))
+        nwidth = int(round((192.0 / height * width), 0))
         if (nwidth == 0):
             nwidth = 1
 
-        img = im.resize((nwidth, 20), Image.ANTIALIAS).filter(ImageFilter.SHARPEN)
-        wleft = int(round(((96 - nwidth) / 2), 0))
+        img = im.resize((nwidth, 192), Image.ANTIALIAS).filter(ImageFilter.SHARPEN)
+        wleft = int(round(((192 - nwidth) / 2), 0))
         newImage.paste(img, (wleft, 4))
 
     tv = list(newImage.getdata())
-    # tv = list(img.getdata())
-    # tv = list(im.getdata())
 
     tva = [(255 - x) * 1.0 / 255.0 for x in tv]
-    # print(tva)
     return np.array(tva)
 
 #Helper class to handle loading training and test data. */
