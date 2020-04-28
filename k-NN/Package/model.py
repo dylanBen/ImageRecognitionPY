@@ -7,6 +7,7 @@ def kkn_initial(dataTrain, labelTrain, dataTest, labelTest):
     errors = []
 
     for k in range(2,15):
+        print("knn en cours", k)
         knn = neighbors.KNeighborsClassifier(k)
         error = 100*(1 - knn.fit(dataTrain, labelTrain).score(dataTest, labelTest))
         if opti[0] > error :

@@ -1,14 +1,6 @@
-# ImageRecognitionPY
+# ImageRecognitionPY (k-NN & Logistic Regression)
 
-* Faire les installations suivantes:
+* *README* présent dans sous dossier
 
+* Mettre les images dans un dossier data à la racine du projet (commun aux sous dossiers)
 
-    py -m pip install numpy
-    py -m pip install fs
-    py -m pip install pillow
-    
-
-* Mettre les images dans un dossier data à la base du projet
-
-
-Petit plus vous pouvez lancer le main.py en activant la console python afin de pouvoir manipuler les données à disposition
