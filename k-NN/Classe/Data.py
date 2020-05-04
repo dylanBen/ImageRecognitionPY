@@ -2,6 +2,7 @@
 import numpy as np
 from fs.osfs import OSFS
 from PIL import Image, ImageFilter
+import os
 
 TRAIN_IMAGES_DIR = './data/train';
 TEST_IMAGES_DIR = './data/test';
@@ -30,6 +31,7 @@ def loadImages(dataDir):
         else:
             labels.append(0)
 
+    files.close()
     return [images, labels]
 
 def imagePrepare(path):
@@ -75,6 +77,10 @@ class TuberculosisDataset:
     # /** Loads training and test data. */
     def loadData(self):
         print('Loading images...');
+
+        #permet de revenir sur le dossier parent
+        os.chdir("..")
+
         self.trainData = loadImages(TRAIN_IMAGES_DIR);
 
         self.testData = loadImages(TEST_IMAGES_DIR);
