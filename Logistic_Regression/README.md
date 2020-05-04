@@ -6,6 +6,7 @@
     - pip install numpy
     - pip install sklearn
     - pip install pillow
+    - pip install seaborn
 
 * If Docker Install
 
