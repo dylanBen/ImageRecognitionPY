@@ -4,7 +4,7 @@ from fs.osfs import OSFS
 from PIL import Image, ImageFilter
 import os
 
-TRAIN_IMAGES_DIR = './data/train';
+TRAIN_IMAGES_DIR = './data/focus_train';
 TEST_IMAGES_DIR = './data/test';
 
 def loadImages(dataDir):
