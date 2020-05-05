@@ -40,7 +40,9 @@ def getSample():
 def respectStructure():
     return os.path.exists(os.path.join(train_folder, 'NORMAL')) and os.path.exists(os.path.join(train_folder, 'PNEUMONIA'))
 
-def launchSampling():
+def launchSampling(newSample):
+    if(newSample):
+        sample_size = newSample
     if respectStructure():
         print("Create destination folder (focus train)")
         createFocusFolder()
@@ -50,4 +52,4 @@ def launchSampling():
     else:
         print("Please respect the structure for extraction")
 
-launchSampling()
+launchSampling(sample_size)

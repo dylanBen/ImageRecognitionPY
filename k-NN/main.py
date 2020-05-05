@@ -1,6 +1,7 @@
 import Classe.Data as data
 import Package.model as model
 import matplotlib.pyplot as plt
+import joblib
 
 donne = data.TuberculosisDataset()
 donne.loadData()
@@ -12,6 +13,8 @@ print("Training Images (Shape): ", dataTrain.shape);
 print("Training Labels (Shape): ", labelTrain.shape);
 
 KKN_Gen = model.kkn_initial(dataTrain, labelTrain, dataTest, labelTest)
+
+model.kkn_with_diff_number_image(KKN_Gen, donne)
 
 print("conversion...")
 images = dataTrain.reshape((-1, 192, 192))

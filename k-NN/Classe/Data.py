@@ -73,13 +73,13 @@ class TuberculosisDataset:
     def __init__(self): # Notre méthode constructeur
         self.trainData = [];
         self.testData = [];
+        os.chdir("..");
 
     # /** Loads training and test data. */
     def loadData(self):
         print('Loading images...');
 
         #permet de revenir sur le dossier parent
-        os.chdir("..")
 
         self.trainData = loadImages(TRAIN_IMAGES_DIR);
 
